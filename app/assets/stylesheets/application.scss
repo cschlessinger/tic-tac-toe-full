@@ -6,11 +6,7 @@ $border-size: $square * .05;
 
 body {
 	font-size: 100px;
-	font-family: 'NTR', sans-serif;
-}
-
-p {
-	margin: 0;
+	font-family: 'Spinnaker', sans-serif;
 }
 
 #grid {
@@ -45,7 +41,7 @@ p {
 	position: absolute;
 	width: $square;
 	height: $square;
-	background-color: white;
+	line-height: .85em;
 }
 
 .x {
@@ -80,7 +76,6 @@ p {
 #s5 {
 	margin-left: $square * 2 + $border-size;
 	margin-top: $square * 2 + $border-size;
-	background-color: aqua;
 }
 
 #s7 {
