@@ -1,5 +1,5 @@
 $square: 1em;
-$borders: #f1c40f; /*yellow*/
+$border-lines: #f1c40f; /*yellow*/
 $x: #e74c3c; /*red*/
 $o: #3498db; /*blue*/
 $border-size: $square * .05;
@@ -9,7 +9,7 @@ body {
 	font-family: 'Spinnaker', sans-serif;
 }
 
-#grid {
+#board {
 	width: $square * 5;
 	height: $square * 5;
 	background-color: purple;
@@ -19,8 +19,8 @@ body {
 #row {
 	height: $square;
 	width: $square * 3;
-	border-top: $border-size solid $borders;
-	border-bottom: $border-size solid $borders;
+	border-top: $border-size solid $border-lines;
+	border-bottom: $border-size solid $border-lines;
 	position: absolute;
 	margin-top: $square * 2;
 	margin-left: $square;
@@ -29,8 +29,8 @@ body {
 #column {
 	width: $square;
 	height: $square * 3;
-	border-left: $border-size solid $borders;
-	border-right: $border-size solid $borders;
+	border-left: $border-size solid $border-lines;
+	border-right: $border-size solid $border-lines;
 	position: absolute;
 	margin-top: $square;
 	margin-left: $square * 2;
@@ -52,48 +52,48 @@ body {
 	color: $o;
 }
 
-#s8 {
+#one {
 	position: absolute;
 	margin-left: $square;
 	margin-top: $square;
 }
 
-#s1 {
+#two {
 	margin-left: $square * 2 + $border-size;
 	margin-top: $square;
 }
 
-#s6 {
+#three {
 	margin-left: $square * 3 + $border-size * 2;
 	margin-top: $square;
 }
 
-#s3 {
+#four {
 	margin-left: $square;
 	margin-top: $square * 2 + $border-size;
 }
 
-#s5 {
+#five {
 	margin-left: $square * 2 + $border-size;
 	margin-top: $square * 2 + $border-size;
 }
 
-#s7 {
+#six {
 	margin-left: $square * 3 + $border-size * 2;
 	margin-top: $square * 2 + $border-size;
 }
 
-#s4 {
+#seven {
 	margin-left: $square;
 	margin-top: $square * 3 + $border-size * 2;
 }
 
-#s9 {
+#eight {
 	margin-left: $square * 2 + $border-size;
 	margin-top: $square * 3 + $border-size * 2;
 }
 
-#s2 {
+#nine {
 	margin-left: $square * 3 + $border-size * 2;
 	margin-top: $square * 3 + $border-size * 2;
 }
