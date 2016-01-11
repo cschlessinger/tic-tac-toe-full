@@ -9,6 +9,20 @@ body {
 	font-family: 'Spinnaker', sans-serif;
 }
 
+#game-over {
+	width: $square * 5;
+	height: $square * 2;
+	margin: 0 auto;
+	background-color: purple;
+}
+
+#winner {
+	width: $square * 4;
+	height: $square * 1;
+	margin: 0 auto;
+	background-color: teal;
+}
+
 #board {
 	width: $square * 5;
 	height: $square * 5;
