@@ -9,18 +9,24 @@ body {
 	font-family: 'Spinnaker', sans-serif;
 }
 
-#game-over {
-	width: $square * 5;
-	height: $square * 2;
-	margin: 0 auto;
-	background-color: purple;
+#winner {
+	width: $square * 10;
+	height: $square * 1.5;
+	margin: $square * .2 auto;
+	background-color: teal;
+	text-align: center;
+	font-size: $square * .5;
+	line-height: $square * 1.5;
 }
 
-#winner {
-	width: $square * 4;
-	height: $square * 1;
-	margin: 0 auto;
-	background-color: teal;
+#reset {
+	width: $square * 6;
+	height: $square * 1.5;
+	margin: $square * .2 auto;
+	text-align: center;
+	background-color: blue;
+	font-size: $square * .2;
+	padding: $square * .2;
 }
 
 #board {
