@@ -1,8 +1,11 @@
 $square: 1em;
-$border-lines: #f1c40f; /*yellow*/
-$x: #e74c3c; /*red*/
+$x: #40d47e; /*green*/
 $o: #3498db; /*blue*/
+$board-color: #2c3e50; /*midnight blue*/
+$border-lines: #f1c40f; /*yellow*/
 $border-size: $square * .05;
+$winner-box-color: #9b59b6;
+$reset-btn-color: #e67e22; /*orange*/
 
 body {
 	font-size: 100px;
@@ -13,27 +16,42 @@ body {
 	width: $square * 10;
 	height: $square * 1.5;
 	margin: $square * .2 auto;
-	background-color: teal;
+	/*background-color: $winner-box-color;*/
 	text-align: center;
 	font-size: $square * .5;
 	line-height: $square * 1.5;
 }
 
 #reset {
+	box-sizing: border-box;
 	width: $square * 6;
-	height: $square * 1.5;
+	height: $square * 2;
 	margin: $square * .2 auto;
 	text-align: center;
-	background-color: blue;
+	background-color: $reset-btn-color;
 	font-size: $square * .2;
-	padding: $square * .2;
+	padding: $square * .4;
+	$border-radius: $square;
+	border: $border-size solid $reset-btn-color;
+}
+
+#reset:hover {
+	background-color: white;
 }
 
 #board {
 	width: $square * 5;
 	height: $square * 5;
-	background-color: purple;
+	border: $border-size solid $border-lines;
 	margin: 0 auto;
+}
+
+.x-background {
+	background-color: $x;
+}
+
+.o-background {
+	background-color: $o;
 }
 
 #row {

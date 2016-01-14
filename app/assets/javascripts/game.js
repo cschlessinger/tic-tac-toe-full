@@ -35,18 +35,24 @@ var play = function() {
 				winner = rightLeftWin(gridContents, player)
 			}
 
-			player = player == 'x' ? 'o' : 'x';
+			player = player == "x" ? "o" : "x";
 			moves += 1;
 
 			if (moves < 10 && winner != undefined) {
+				if (winner == "x") {
+					$('#winner').addClass("x-background");
+				}
+				else {
+					$('#winner').addClass("o-background");
+				};
 				$('#winner').show().html(winner.toUpperCase() + " wins the game!");
 				$('#reset').show().html("Play again");
-				return false;
+				$('.square').off("click");
 			}
 			else if (moves == 9 && winner == undefined) {
 				$('#winner').html("It's a tie!");
 				$('#reset').html("Play again");
-				return false;
+				$('.square').off("click");
 			};
 
 		}
@@ -106,9 +112,6 @@ var validMove = function(square) {
 
 var reset = function() {
 	$('#reset').on("click", function() {
-		$('.square').off("click", function() {
-			console.log("working");
-		})
 		$('#winner').hide();
 		$('#reset').hide();
 		$('square').removeClass("x");
@@ -118,4 +121,4 @@ var reset = function() {
 	})
 }
 
-// Make alert that game is over and start new game
+// Reset board
