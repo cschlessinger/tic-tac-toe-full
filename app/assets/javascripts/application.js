@@ -51,12 +51,12 @@ var play = function() {
 				winner = rightLeftWin(gridContents, player)
 			}
 
-			player = player == "x" ? "o" : "x";
+			player = player === "x" ? "o" : "x";
 			updatePlayer(player);
 			moves += 1;
 
 			if (moves < 10 && winner != undefined) {
-				if (winner == "x") {
+				if (winner === "x") {
 					$('#message').removeClass("neutral-background").addClass("x-background");
 				}
 				else {
@@ -66,7 +66,7 @@ var play = function() {
 				$('#reset').show().html("Play again");
 				$('.square').off("click");
 			}
-			else if (moves == 9 && winner == undefined) {
+			else if (moves === 9 && winner === undefined) {
 				$('#message').addClass("neutral-background").html("It's a tie!");
 				$('#reset').show()
 				$('.square').off("click");
@@ -78,7 +78,7 @@ var play = function() {
 
 var rowWin = function(array, p) {
 	for (var i=0, group=3; i<array.length; i+=3) {
-		if (array.slice(i, i+group).every(elem => elem == p)) {
+		if (array.slice(i, i+group).every(elem => elem === p)) {
 			return p;
 		};
 	};
@@ -90,7 +90,7 @@ var columnWin = function(array, p) {
 		columnArray.push([array[i], array[i+3], array[i+6]]);
 	};
 	for (var column in columnArray) {
-		if (columnArray[column].every(elem => elem == p)) {
+		if (columnArray[column].every(elem => elem === p)) {
 			return p;
 		};
 	};
@@ -100,7 +100,7 @@ var leftRightWin = function(array, p) {
 	var diagonalArray=[];
 	for (var i=0; i<array.length; i+=4) {
 		diagonalArray.push(array[i]);
-		if (!diagonalArray.includes("") && diagonalArray.length == 3 && diagonalArray.every(elem => elem == p)) {
+		if (!diagonalArray.includes("") && diagonalArray.length === 3 && diagonalArray.every(elem => elem === p)) {
 			return p;
 		};
 	}
@@ -110,7 +110,7 @@ var rightLeftWin = function(array, p) {
 	var diagonalArray=[];
 	for (var i=2; i<7; i+=2) {
 		diagonalArray.push(array[i]);
-		if (!diagonalArray.includes("") && diagonalArray.length == 3 && diagonalArray.every(elem => elem == p)) {
+		if (!diagonalArray.includes("") && diagonalArray.length === 3 && diagonalArray.every(elem => elem === p)) {
 			return p;
 		};
 	}
