@@ -50,8 +50,8 @@ var play = function() {
 				$('.square').off("click");
 			}
 			else if (moves == 9 && winner == undefined) {
-				$('#winner').html("It's a tie!");
-				$('#reset').html("Play again");
+				$('#winner').addClass("tie-background").show().html("It's a tie!");
+				$('#reset').show().html("Play again");
 				$('.square').off("click");
 			};
 
