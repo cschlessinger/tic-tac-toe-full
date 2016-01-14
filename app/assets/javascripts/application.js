@@ -15,7 +15,6 @@
 //= require_tree .
 
 $(document).ready(function() {
-	$('#winner').hide();
 	$('#reset').hide();
 	play();
 	reset();
@@ -26,6 +25,7 @@ var play = function() {
 	var	moves = 0;
 	var grid = $('.square');
 	var winner;
+	updatePlayer(player);
 	$('.square').on("click", function() {
 		var gridContents = [];
 
@@ -52,21 +52,24 @@ var play = function() {
 			}
 
 			player = player == "x" ? "o" : "x";
+			updatePlayer(player);
 			moves += 1;
 
 			if (moves < 10 && winner != undefined) {
 				if (winner == "x") {
-					$('#winner').addClass("x-background");
+					$('#message').removeClass("neutral-background").addClass("x-background");
+					console.log("winner working")
 				}
 				else {
-					$('#winner').addClass("o-background");
+					$('#message').removeClass("neutral-background").addClass("o-background");
+					console.log("winner working")
 				};
-				$('#winner').show().html(winner.toUpperCase() + " wins the game!");
+				$('#message').show().html(winner.toUpperCase() + " wins the game!");
 				$('#reset').show().html("Play again");
 				$('.square').off("click");
 			}
 			else if (moves == 9 && winner == undefined) {
-				$('#winner').addClass("tie-background").show().html("It's a tie!");
+				$('#message').addClass("neutral-background").show().html("It's a tie!");
 				$('#reset').show().html("Play again");
 				$('.square').off("click");
 			};
@@ -104,7 +107,7 @@ var leftRightWin = function(array, p) {
 			return p;
 		}
 	}
-}
+};
 
 var rightLeftWin = function(array, p) {
 	var diagonalArray=[];
@@ -114,7 +117,11 @@ var rightLeftWin = function(array, p) {
 			return p;
 		}
 	}
-}
+};
+
+var updatePlayer = function(p) {
+	$("#message").addClass("neutral-background").html(p.toUpperCase() + "'s move");
+};
 
 var validMove = function(square) {
 	if (square.html() === "") {
@@ -124,17 +131,15 @@ var validMove = function(square) {
 		alert("Oops! Space is already taken");
 		return false;
 	}
-}
+};
 
 var reset = function() {
-	$('#reset').on("click", function() {
-		$('#winner').hide();
-		$('#reset').hide();
-		$('.square').removeClass("x");
-		$('.square').removeClass("o");
-		$('.square').empty();
+	$("#reset").on("click", function() {
+		$("#reset").hide();
+		$("#message").removeClass().addClass("neutral-background");
+		$(".square").removeClass("x");
+		$(".square").removeClass("o");
+		$(".square").empty();
 		play();
 	})
-}
-
-// Reset board
+};
