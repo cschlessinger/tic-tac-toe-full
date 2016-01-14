@@ -38,18 +38,9 @@ var play = function() {
 				gridContents.push($(this).html());
 			})
 
-			if (columnWin(gridContents, player) != undefined) {
-				winner = columnWin(gridContents, player)
-			}
-			else if (rowWin(gridContents, player) != undefined) {
-				winner = rowWin(gridContents, player)
-			}
-			else if (leftRightWin(gridContents, player) != undefined) {
-				winner = leftRightWin(gridContents, player)
-			}
-			else if (rightLeftWin(gridContents, player) != undefined) {
-				winner = rightLeftWin(gridContents, player)
-			}
+			if (columnWin(gridContents, player) || rowWin(gridContents, player) || diagonalWin(gridContents, player)) {
+				winner = player;
+			};
 
 			player = player === "x" ? "o" : "x";
 			updatePlayer(player);
@@ -79,7 +70,7 @@ var play = function() {
 var rowWin = function(array, p) {
 	for (var i=0, group=3; i<array.length; i+=3) {
 		if (array.slice(i, i+group).every(elem => elem === p)) {
-			return p;
+			return true;
 		};
 	};
 };
@@ -91,27 +82,24 @@ var columnWin = function(array, p) {
 	};
 	for (var column in columnArray) {
 		if (columnArray[column].every(elem => elem === p)) {
-			return p;
+			return true;
 		};
 	};
 };
 
-var leftRightWin = function(array, p) {
-	var diagonalArray=[];
+var diagonalWin = function(array, p) {
+	var leftRight=[];
 	for (var i=0; i<array.length; i+=4) {
-		diagonalArray.push(array[i]);
-		if (!diagonalArray.includes("") && diagonalArray.length === 3 && diagonalArray.every(elem => elem === p)) {
-			return p;
+		leftRight.push(array[i]);
+		if (!leftRight.includes("") && leftRight.length === 3 && leftRight.every(elem => elem === p)) {
+			return true;
 		};
 	}
-};
-
-var rightLeftWin = function(array, p) {
-	var diagonalArray=[];
+	var rightLeftDiagonalArray=[];
 	for (var i=2; i<7; i+=2) {
-		diagonalArray.push(array[i]);
-		if (!diagonalArray.includes("") && diagonalArray.length === 3 && diagonalArray.every(elem => elem === p)) {
-			return p;
+		rightLeftDiagonalArray.push(array[i]);
+		if (!rightLeftDiagonalArray.includes("") && rightLeftDiagonalArray.length === 3 && rightLeftDiagonalArray.every(elem => elem === p)) {
+			return true;
 		};
 	}
 };
