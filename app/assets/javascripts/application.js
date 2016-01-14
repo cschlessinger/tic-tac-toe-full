@@ -55,7 +55,7 @@ var play = function() {
 			updatePlayer(player);
 			moves += 1;
 
-			if (moves < 10 && winner != undefined) {
+			if (moves < 10 && winner) {
 				if (winner === "x") {
 					$('#message').removeClass("neutral-background").addClass("x-background");
 				}
@@ -63,10 +63,10 @@ var play = function() {
 					$('#message').removeClass("neutral-background").addClass("o-background");
 				};
 				$('#message').html(winner.toUpperCase() + " wins the game!");
-				$('#reset').show().html("Play again");
+				$('#reset').show();
 				$('.square').off("click");
 			}
-			else if (moves === 9 && winner === undefined) {
+			else if (moves === 9 && !winner) {
 				$('#message').addClass("neutral-background").html("It's a tie!");
 				$('#reset').show()
 				$('.square').off("click");
