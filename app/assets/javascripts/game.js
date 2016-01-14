@@ -1,46 +1,64 @@
 $(document).ready(function() {
+	$('#winner').hide();
+	$('#reset').hide();
+	play();
+	reset();
+});
+
+var play = function() {
 	var player = "o";
 	var	moves = 0;
 	var grid = $('.square');
 	var winner;
-	var play = function() {
-		$('.square').on("click", function() {
-			var gridContents = [];
+	$('.square').on("click", function() {
+		var gridContents = [];
 
-			if (validMove($(this))) {
+		if (validMove($(this))) {
 
-				$(this).html(player);
-				$(this).addClass(player);
+			$(this).html(player);
+			$(this).addClass(player);
 
-				grid.each(function() {
-					gridContents.push($(this).html());
-				})
+			grid.each(function() {
+				gridContents.push($(this).html());
+			})
 
-				if (columnWin(gridContents, player) != undefined) {
-					winner = columnWin(gridContents, player)
-				}
-				else if (rowWin(gridContents, player) != undefined) {
-					winner = rowWin(gridContents, player)
-				}
-				else if (leftRightWin(gridContents, player) != undefined) {
-					winner = leftRightWin(gridContents, player)
-				}
-				else if (rightLeftWin(gridContents, player) != undefined) {
-					winner = rightLeftWin(gridContents, player)
-				}
-
-				if (winner != undefined) {
-					alert(winner);
-				}
-
-				player = player == 'x' ? 'o' : 'x';
-				moves += 1;
+			if (columnWin(gridContents, player) != undefined) {
+				winner = columnWin(gridContents, player)
+			}
+			else if (rowWin(gridContents, player) != undefined) {
+				winner = rowWin(gridContents, player)
+			}
+			else if (leftRightWin(gridContents, player) != undefined) {
+				winner = leftRightWin(gridContents, player)
+			}
+			else if (rightLeftWin(gridContents, player) != undefined) {
+				winner = rightLeftWin(gridContents, player)
 			}
 
-		})
-	}
-	play();
-})
+			player = player == "x" ? "o" : "x";
+			moves += 1;
+
+			if (moves < 10 && winner != undefined) {
+				if (winner == "x") {
+					$('#winner').addClass("x-background");
+				}
+				else {
+					$('#winner').addClass("o-background");
+				};
+				$('#winner').show().html(winner.toUpperCase() + " wins the game!");
+				$('#reset').show().html("Play again");
+				$('.square').off("click");
+			}
+			else if (moves == 9 && winner == undefined) {
+				$('#winner').addClass("tie-background").show().html("It's a tie!");
+				$('#reset').show().html("Play again");
+				$('.square').off("click");
+			};
+
+		}
+
+	})
+};
 
 var rowWin = function(array, p) {
 	for (var i=0, group=3; i<array.length; i+=3) {
@@ -92,16 +110,15 @@ var validMove = function(square) {
 	}
 }
 
-// var reset = function() {
-// 	$('square').removeClass("x");
-// 	$('square').removeClass("o");
-// 	moves = 0;
-// 	alert("Game over!")
-// }
+var reset = function() {
+	$('#reset').on("click", function() {
+		$('#winner').hide();
+		$('#reset').hide();
+		$('.square').removeClass("x");
+		$('.square').removeClass("o");
+		$('.square').empty();
+		play();
+	})
+}
 
-// var endGame = function() {
-	// reset();
-// }
-
-// Make alert that game is over and start new game
-// Account for ties
+// Reset board
