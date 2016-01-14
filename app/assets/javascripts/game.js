@@ -71,14 +71,14 @@ var diagonalWin = function(array, p) {
 		if (!leftRight.includes("") && leftRight.length === 3 && leftRight.every(elem => elem === p)) {
 			return true;
 		};
-	}
+	};
 	var rightLeftDiagonalArray=[];
 	for (var i=2; i<7; i+=2) {
 		rightLeftDiagonalArray.push(array[i]);
 		if (!rightLeftDiagonalArray.includes("") && rightLeftDiagonalArray.length === 3 && rightLeftDiagonalArray.every(elem => elem === p)) {
 			return true;
 		};
-	}
+	};
 };
 
 var updatePlayer = function(p) {
