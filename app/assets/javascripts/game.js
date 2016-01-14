@@ -114,9 +114,9 @@ var reset = function() {
 	$('#reset').on("click", function() {
 		$('#winner').hide();
 		$('#reset').hide();
-		$('square').removeClass("x");
-		$('square').removeClass("o");
-		$('square').empty();
+		$('.square').removeClass("x");
+		$('.square').removeClass("o");
+		$('.square').empty();
 		play();
 	})
 }
