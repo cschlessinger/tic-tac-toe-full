@@ -1,0 +1,141 @@
+$square: 1em;
+$x: #40d47e; /*green*/
+$o: #3498db; /*blue*/
+$border-lines: #f1c40f; /*yellow*/
+$border-size: $square * .05;
+$reset-btn-color: #e67e22; /*orange*/
+$tie-btn-color: #2c3e50;
+
+body {
+	font-size: 100px;
+	font-family: 'Spinnaker', sans-serif;
+	color: white;
+}
+
+#winner {
+	width: $square * 10;
+	height: $square * 1.5;
+	margin: $square * .2 auto;
+	text-align: center;
+	font-size: $square * .5;
+	line-height: $square * 1.5;
+}
+
+#reset {
+	box-sizing: border-box;
+	width: $square * 6;
+	height: $square * 2;
+	margin: $square * .2 auto;
+	text-align: center;
+	background-color: $reset-btn-color;
+	font-size: $square * .2;
+	padding: $square * .4;
+	$border-radius: $square;
+	border: $border-size solid $reset-btn-color;
+}
+
+#reset:hover {
+	background-color: white;
+	color: $reset-btn-color;
+}
+
+#board {
+	width: $square * 5;
+	height: $square * 5;
+	border: $border-size solid $border-lines;
+	margin: 0 auto;
+}
+
+.x-background {
+	background-color: $x;
+}
+
+.o-background {
+	background-color: $o;
+}
+
+.tie-background {
+	background-color: $tie-btn-color;
+}
+
+#row {
+	height: $square;
+	width: $square * 3;
+	border-top: $border-size solid $border-lines;
+	border-bottom: $border-size solid $border-lines;
+	position: absolute;
+	margin-top: $square * 2;
+	margin-left: $square;
+}
+
+#column {
+	width: $square;
+	height: $square * 3;
+	border-left: $border-size solid $border-lines;
+	border-right: $border-size solid $border-lines;
+	position: absolute;
+	margin-top: $square;
+	margin-left: $square * 2;
+}
+
+.square {
+	text-align: center;
+	position: absolute;
+	width: $square;
+	height: $square;
+	line-height: .85em;
+}
+
+.x {
+	color: $x;
+}
+
+.o {
+	color: $o;
+}
+
+#one {
+	position: absolute;
+	margin-left: $square;
+	margin-top: $square;
+}
+
+#two {
+	margin-left: $square * 2 + $border-size;
+	margin-top: $square;
+}
+
+#three {
+	margin-left: $square * 3 + $border-size * 2;
+	margin-top: $square;
+}
+
+#four {
+	margin-left: $square;
+	margin-top: $square * 2 + $border-size;
+}
+
+#five {
+	margin-left: $square * 2 + $border-size;
+	margin-top: $square * 2 + $border-size;
+}
+
+#six {
+	margin-left: $square * 3 + $border-size * 2;
+	margin-top: $square * 2 + $border-size;
+}
+
+#seven {
+	margin-left: $square;
+	margin-top: $square * 3 + $border-size * 2;
+}
+
+#eight {
+	margin-left: $square * 2 + $border-size;
+	margin-top: $square * 3 + $border-size * 2;
+}
+
+#nine {
+	margin-left: $square * 3 + $border-size * 2;
+	margin-top: $square * 3 + $border-size * 2;
+}
