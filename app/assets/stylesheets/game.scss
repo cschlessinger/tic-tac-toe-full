@@ -4,7 +4,7 @@ $o: #3498db; /*blue*/
 $border-lines: #f1c40f; /*yellow*/
 $border-size: $square * .05;
 $reset-btn-color: #e67e22; /*orange*/
-$neutral: #2c3e50;
+$neutral: #2c3e50; /*dark blue*/
 
 body {
 	font-size: 100px;
@@ -78,14 +78,6 @@ body {
 	margin-left: $square * 2;
 }
 
-.square {
-	text-align: center;
-	position: absolute;
-	width: $square;
-	height: $square;
-	line-height: .85em;
-}
-
 .x {
 	color: $x;
 }
@@ -94,8 +86,15 @@ body {
 	color: $o;
 }
 
-#one {
+.square {
+	text-align: center;
 	position: absolute;
+	width: $square;
+	height: $square;
+	line-height: .85em;
+}
+
+#one {
 	margin-left: $square;
 	margin-top: $square;
 }
