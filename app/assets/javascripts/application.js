@@ -30,7 +30,7 @@ var play = function() {
 		var gridContents = [];
 
 		if (validMove($(this))) {
-
+			moves += 1;
 			$(this).html(player);
 			$(this).addClass(player);
 
@@ -42,25 +42,18 @@ var play = function() {
 				winner = player;
 			};
 
-			player = player === "x" ? "o" : "x";
-			updatePlayer(player);
-			moves += 1;
-
-			if (moves < 10 && winner) {
-				if (winner === "x") {
-					$('#message').removeClass("neutral-background").addClass("x-background");
-				}
-				else {
-					$('#message').removeClass("neutral-background").addClass("o-background");
-				};
-				$('#message').html(winner.toUpperCase() + " wins the game!");
-				$('#reset').show();
-				$('.square').off("click");
+			if (winner) {
+				winGame(winner);
 			}
-			else if (moves === 9 && !winner) {
-				$('#message').addClass("neutral-background").html("It's a tie!");
-				$('#reset').show()
-				$('.square').off("click");
+			else {
+				if (moves === 9) {
+					$('#message').addClass("neutral-background").html("It's a tie!");
+					$('#reset').show()
+					$('.square').off("click");
+				} else {
+					player = player === "x" ? "o" : "x";
+					updatePlayer(player);
+				}
 			};
 
 		}
@@ -111,12 +104,22 @@ var updatePlayer = function(p) {
 var validMove = function(square) {
 	if (square.html() === "") {
 		return true;
-	}
-	else {
+	} else {
 		alert("Oops! Space is already taken");
 		return false;
 	};
 };
+
+var winGame = function(winner) {
+	if (winner === "x") {
+		$('#message').removeClass("neutral-background").addClass("x-background");
+	} else {
+		$('#message').removeClass("neutral-background").addClass("o-background");
+	};
+	$('#message').html(winner.toUpperCase() + " wins the game!");
+	$('#reset').show();
+	$('.square').off("click");
+}
 
 var reset = function() {
 	$("#reset").on("click", function() {
