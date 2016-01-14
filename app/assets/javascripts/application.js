@@ -58,24 +58,21 @@ var play = function() {
 			if (moves < 10 && winner != undefined) {
 				if (winner == "x") {
 					$('#message').removeClass("neutral-background").addClass("x-background");
-					console.log("winner working")
 				}
 				else {
 					$('#message').removeClass("neutral-background").addClass("o-background");
-					console.log("winner working")
 				};
-				$('#message').show().html(winner.toUpperCase() + " wins the game!");
+				$('#message').html(winner.toUpperCase() + " wins the game!");
 				$('#reset').show().html("Play again");
 				$('.square').off("click");
 			}
 			else if (moves == 9 && winner == undefined) {
-				$('#message').addClass("neutral-background").show().html("It's a tie!");
-				$('#reset').show().html("Play again");
+				$('#message').addClass("neutral-background").html("It's a tie!");
+				$('#reset').show()
 				$('.square').off("click");
 			};
 
 		}
-
 	})
 };
 
@@ -83,7 +80,7 @@ var rowWin = function(array, p) {
 	for (var i=0, group=3; i<array.length; i+=3) {
 		if (array.slice(i, i+group).every(elem => elem == p)) {
 			return p;
-		}
+		};
 	};
 };
 
@@ -95,7 +92,7 @@ var columnWin = function(array, p) {
 	for (var column in columnArray) {
 		if (columnArray[column].every(elem => elem == p)) {
 			return p;
-		}
+		};
 	};
 };
 
@@ -105,7 +102,7 @@ var leftRightWin = function(array, p) {
 		diagonalArray.push(array[i]);
 		if (!diagonalArray.includes("") && diagonalArray.length == 3 && diagonalArray.every(elem => elem == p)) {
 			return p;
-		}
+		};
 	}
 };
 
@@ -115,7 +112,7 @@ var rightLeftWin = function(array, p) {
 		diagonalArray.push(array[i]);
 		if (!diagonalArray.includes("") && diagonalArray.length == 3 && diagonalArray.every(elem => elem == p)) {
 			return p;
-		}
+		};
 	}
 };
 
@@ -130,16 +127,14 @@ var validMove = function(square) {
 	else {
 		alert("Oops! Space is already taken");
 		return false;
-	}
+	};
 };
 
 var reset = function() {
 	$("#reset").on("click", function() {
-		$("#reset").hide();
+		$(this).hide();
 		$("#message").removeClass().addClass("neutral-background");
-		$(".square").removeClass("x");
-		$(".square").removeClass("o");
-		$(".square").empty();
+		$(".square").removeClass("x o").empty();
 		play();
 	})
 };
