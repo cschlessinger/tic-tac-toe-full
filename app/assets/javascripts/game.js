@@ -5,10 +5,11 @@ $(document).ready(function() {
 });
 
 var play = function() {
-	var player = "o";
 	var	moves = 0;
 	var grid = $('.square');
 	var winner;
+	var player;
+	choosePlayer(player);
 	updatePlayer(player);
 	$('.square').on("click", function() {
 		var gridContents = [];
@@ -42,6 +43,23 @@ var play = function() {
 
 		}
 	})
+};
+
+var choosePlayer = function(p) {
+	
+}
+
+var updatePlayer = function(p) {
+	$("#message").addClass("neutral-background").html(p.toUpperCase() + "'s move");
+};
+
+var validMove = function(square) {
+	if (square.html() === "") {
+		return true;
+	} else {
+		alert("Oops! Space is already taken");
+		return false;
+	};
 };
 
 var rowWin = function(array, p) {
@@ -78,19 +96,6 @@ var diagonalWin = function(array, p) {
 		if (!rightLeftDiagonalArray.includes("") && rightLeftDiagonalArray.length === 3 && rightLeftDiagonalArray.every(elem => elem === p)) {
 			return true;
 		};
-	};
-};
-
-var updatePlayer = function(p) {
-	$("#message").addClass("neutral-background").html(p.toUpperCase() + "'s move");
-};
-
-var validMove = function(square) {
-	if (square.html() === "") {
-		return true;
-	} else {
-		alert("Oops! Space is already taken");
-		return false;
 	};
 };
 
