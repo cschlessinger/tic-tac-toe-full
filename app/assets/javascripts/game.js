@@ -21,7 +21,6 @@ var ticTacToe = function() {
 
 				if (validMove($(this))) {
 					moves += 1;
-					console.log(moves)
 					$(this).html(player);
 					$(this).addClass(player);
 
@@ -130,11 +129,7 @@ var ticTacToe = function() {
 			$(".square").removeClass("x o").empty();
 
 			// Call ticTacToe to reset all variables
-			moves = 0;
-	    grid = $('.square');
-	    winner = null;
-	    player = null;
-	    // play();
+			ticTacToe();
 		})
 	};
 
