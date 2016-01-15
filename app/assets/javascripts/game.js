@@ -14,9 +14,7 @@ var ticTacToe = function() {
 
 		$("#message").addClass("neutral-background").html("Select ").append("<span id='x' class='pointer selection'>x</span>").append("<span> or </span>").append("<span id='o' class='pointer selection'> o</span>");
 
-
 		player = choosePlayer(player);
-		console.log(player);
 		$('.square').on("click", function() {
 			console.log(player);
 			var gridContents = [];
@@ -127,7 +125,9 @@ var ticTacToe = function() {
 			$(this).hide();
 			$("#message").removeClass().addClass("neutral-background");
 			$(".square").removeClass("x o").empty();
-			play();
+			// winner = undefined;
+			// moves = 0;
+			ticTacToe();
 		})
 	};
 
