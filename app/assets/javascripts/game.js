@@ -12,42 +12,47 @@ var ticTacToe = function() {
 
 	var play = function() {
 
-		$("#message").addClass("neutral-background").html("Select ").append("<span id='x' class='pointer selection'>x</span>").append("<span> or </span>").append("<span id='o' class='pointer selection'> o</span>");
+		// Start game with user's selection of player
+		$("#message").addClass("neutral-background").html("Select ").append("<span id='x' class='x pointer selection'>x</span>").append("<span> or </span>").append("<span id='o' class='o pointer selection'> o</span>");
+		player = choosePlayer();
+		console.log(player + " before click");
 
-		player = choosePlayer(player);
-		$('.square').on("click", function() {
-			console.log(player);
-			var gridContents = [];
+			$('.square').on("click", function() {
+				console.log(player + " in click")
+				var gridContents = [];
 
-			if (validMove($(this))) {
-				moves += 1;
-				$(this).html(player);
-				$(this).addClass(player);
+				if (validMove($(this))) {
+					moves += 1;
+					console.log(moves)
+					$(this).html(player);
+					$(this).addClass(player);
 
-				grid.each(function() {
-					gridContents.push($(this).html());
-				})
+					grid.each(function() {
+						gridContents.push($(this).html());
+					})
 
-				if (columnWin(gridContents, player) || rowWin(gridContents, player) || diagonalWin(gridContents, player)) {
-					winner = player;
-				};
+					if (columnWin(gridContents, player) || rowWin(gridContents, player) || diagonalWin(gridContents, player)) {
+						winner = player;
+					};
 
-				if (winner) {
-					winGame(winner);
-				}
-				else {
-					if (moves === 9) {
-						$('#message').addClass("neutral-background").html("It's a tie!");
-						$('#reset').show()
-						$('.square').off("click");
-					} else {
-						player = player === "x" ? "o" : "x";
-						updatePlayer(player);
+					if (winner) {
+						winGame(winner);
 					}
-				};
+					else {
+						if (moves === 9) {
+							$('#message').addClass("neutral-background").html("It's a tie!");
+							$('#reset').show()
+							$('.square').off("click");
+						} else {
+							player = player === "x" ? "o" : "x";
+							updatePlayer(player);
+						}
+					};
 
-			}
-		})
+				}
+			})
+			
+		
 
 		reset();
 	};
@@ -59,12 +64,12 @@ var ticTacToe = function() {
 		});
 	};
 
-	var updatePlayer = function(p) {
-		$("#message").addClass("neutral-background").html(p.toUpperCase() + "'s move");
+	var updatePlayer = function(player) {
+		$("#message").addClass("neutral-background").html(player.toUpperCase() + "'s move");
 	};
 
 	var validMove = function(square) {
-		if (square.html() === "") {
+		if (square.html().length === 0) {
 			return true;
 		} else {
 			alert("Oops! Space is already taken");
@@ -123,14 +128,14 @@ var ticTacToe = function() {
 	var reset = function() {
 		$("#reset").on("click", function() {
 			$(this).hide();
-			$("#message").removeClass().addClass("neutral-background");
+			$("#message").removeClass("x-background o-background").addClass("neutral-background");
 			$(".square").removeClass("x o").empty();
-			// winner = undefined;
-			// moves = 0;
+
+			// Call ticTacToe to reset all variables
 			ticTacToe();
 		})
 	};
 
-	return play();
+	play();
 
 }
