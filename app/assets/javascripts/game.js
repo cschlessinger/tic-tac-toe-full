@@ -130,7 +130,11 @@ var ticTacToe = function() {
 			$(".square").removeClass("x o").empty();
 
 			// Call ticTacToe to reset all variables
-			ticTacToe();
+			moves = 0;
+	    grid = $('.square');
+	    winner = null;
+	    player = null;
+	    // play();
 		})
 	};
 
