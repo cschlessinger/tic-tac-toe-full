@@ -15,10 +15,8 @@ var ticTacToe = function() {
 		// Start game with user's selection of player
 		$("#message").addClass("neutral-background").html("Select ").append("<span id='x' class='x pointer selection'>x</span>").append("<span> or </span>").append("<span id='o' class='o pointer selection'> o</span>");
 		player = choosePlayer();
-		console.log(player + " before click");
 
 			$('.square').on("click", function() {
-				console.log(player + " in click")
 				var gridContents = [];
 
 				if (validMove($(this))) {
@@ -136,6 +134,6 @@ var ticTacToe = function() {
 		})
 	};
 
-	play();
+	return play();
 
 }
